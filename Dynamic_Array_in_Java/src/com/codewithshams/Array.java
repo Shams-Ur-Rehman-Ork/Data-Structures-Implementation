@@ -30,6 +30,25 @@ public class Array {
         count++;
     }
 
+    public void insertAt(int index, int item) {
+        if (items.length == count){
+            int[] newItems = new int[count * 2];
+
+            for (int i = 0; i < count; i++)
+                newItems[i] = items[i];
+            items = newItems;
+        }
+
+        if (index < 0 || index > count)
+            throw new IllegalArgumentException();
+
+        for (int i = count; i > index; i--){
+            items[i] = items[i - 1];
+        }
+        items[index] = item;
+        count++;
+    }
+
     public void removeAt(int index) {
         // Step: 1 --> Validate the index in the array.
         if (index < 0 || index >= count)
